@@ -31,7 +31,6 @@
               result.push({key: i, value: options[i]});
             }
             return result;
-            return options;
           }
         },
         
