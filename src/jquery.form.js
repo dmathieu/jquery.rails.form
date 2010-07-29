@@ -1,5 +1,9 @@
 (function($) {
   $.form = function(options, content) {
+    if (content == undefined) {
+      content = options;
+      options = {};
+    }
     return $._form(options, content);
   },
   
