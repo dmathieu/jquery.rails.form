@@ -14,6 +14,11 @@
       action: '#'
     }, options);
     
+    if (options.method.toLowerCase() != 'post' && options.method.toLowerCase() != 'get') {
+      options._method = options.method;
+      options.method = 'post'
+    }
+    
     csrf_token = $('meta[name=csrf-token]').attr('content');
     csrf_param = $('meta[name=csrf-param]').attr('content');
     
@@ -22,6 +27,7 @@
       html: "<form {{>settings}}>\
         {{{content}}}\
         {{>csrf}}\
+        {{>method}}\
       </form>",
       views: {
         settings: {
@@ -48,6 +54,12 @@
           }
         },
         
+        method: {
+          method: function() {
+            return options._method;
+          }
+        },
+        
         content: function() {
           return content;
         }
@@ -58,7 +70,8 @@
           {{key}}=\"{{value}}\"\
         {{/options}}",
         
-        csrf: "<input name=\"{{param}}\" value=\"{{token}}\" type=\"hidden\" />"
+        csrf: "<input name=\"{{param}}\" value=\"{{token}}\" type=\"hidden\" />",
+        method: "<input name=\"_method\" value=\"{{method}}\" type=\"hidden\" />"
       },
       
       render: function() {
