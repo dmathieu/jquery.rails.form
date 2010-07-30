@@ -1,14 +1,10 @@
 (function($) {
-  $.form = function(options, content) {
-    if (content == undefined) {
-      content = options;
-      options = {};
-    }
-    return $._form(options, content);
+  $.form = function(content, options) {
+    return $._form(content, options);
   },
   
   
-  $._form = function(options, content) {
+  $._form = function(content, options) {
     var options = $.extend({
       method: 'post',
       action: '#'
