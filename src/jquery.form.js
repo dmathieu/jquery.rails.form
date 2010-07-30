@@ -32,7 +32,8 @@
              */
             var result = [];
             for(i in options) {
-              result.push({key: i, value: options[i]});
+              if (!/^_/.test(i))
+                result.push({key: i, value: options[i]});
             }
             return result;
           }

@@ -25,7 +25,8 @@ There are two libraries required.
     jQuery.form({action: '/test'}, "This one will be sent to the url /test");
     jQuery.form({class: "awesome_form"}, "This one will have the awesome_form css class");
 
-There's absolutely no restriction on which options you pass. They'll all be added as parameters to the form.
+Any option you pass will be added as HTML parameter to the form, even if they're invalid.  
+The only exception is if the parameters starts with a _. Then it's considered private and not displayed in the HTML.
 
 ## TODO
 
